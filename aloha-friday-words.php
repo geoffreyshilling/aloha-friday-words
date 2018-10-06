@@ -54,7 +54,7 @@ require_once ORD808AF_PLUGIN_DIR . 'includes/post-types.php';
 
 require_once ORD808AF_PLUGIN_DIR . 'public/aloha-friday-cpt-display.php';
 
-
+require_once ABSPATH . '/wp-admin/includes/post.php';
 
 
 

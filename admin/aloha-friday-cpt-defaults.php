@@ -91,20 +91,12 @@ function default_category_featured_image() {
     else if ( in_category('175') ) {
     set_post_thumbnail($post->ID, '3105');
     }
-    else if ( in_category('55') ) {
-    set_post_thumbnail($post->ID, '40383');
-    }
-    else if ( in_category('56') ) {
-    set_post_thumbnail($post->ID, '40382');
-    }
-    else {
-    set_post_thumbnail($post->ID, '40381');
     wp_reset_postdata();
                                    }
                                    
                                }
                             
-          }
+          
     add_action('the_post', 'default_category_featured_image');
 
 // Create a function called "ord808af_add_default_title" if it doesn't already exist
@@ -126,13 +118,30 @@ if ( ! function_exists( 'ord808af_add_default_title' ) ) {
 			  $mondayOfThisWeek1 = strtotime('last monday');
 			  $weekOfMonday1 = date( 'F j', $mondayOfThisWeek1 ) ;
   
-			  // 
-				if (get_page_by_title('Aloha Friday - Week of October 8', OBJECT, 'ord808_aloha_friday') != null ) {
-					$my_title1 = "Aloha Friday - Week of October 8 Already Exists" . get_page_by_title('Aloha Friday - Week of October 8');
-					
-				} else {
-					$my_title1 = "Doesnt exists. return value is: " . get_page_by_title('Aloha Friday - Week of October 8');
-				}
+			  $my_title1 = 'Aloha Friday - Week of ' . $weekOfMonday1;
+			  $post_id1 = post_exists( $my_title1 );
+
+			  while ( $post_id1 ) {
+				$mondayOfThisWeek1 = strtotime("+7 day", $mondayOfThisWeek1);
+				$weekOfMonday1 = date( 'F j', $mondayOfThisWeek1 ) ;
+				$my_title1 = 'Aloha Friday - Week of ' . $weekOfMonday1;
+
+				$post_id1 = post_exists( $my_title1 );
+			}
+			
+			  if (get_page_by_title($my_title1, OBJECT, 'ord808_aloha_friday') != null ) {
+				$my_title1 = 'Aloha Friday - Week of ' . $weekOfMonday1 . " already exists";
+				
+			} else {
+				$my_title1 = 'Aloha Friday - Week of ' . $weekOfMonday1;
+			}
+ 			  // 
+			//	if (get_page_by_title('Aloha Friday - Week of October 8', OBJECT, 'ord808_aloha_friday') != null ) {
+			//		$my_title1 = "Aloha Friday - Week of October 8 Already Exists" . get_page_by_title('Aloha Friday - Week of October 8');
+			//		
+			//	} else {
+			//		$my_title1 = "Doesnt exists. return value is: " . get_page_by_title('Aloha Friday - Week of October 8');
+			//	}
 			  
 			 
 			  //$placeholder = __( 'Aloha Friday - Week of ', 'aloha-friday-words' ) . $weekOfMonday;
