@@ -147,7 +147,16 @@ if ( ! function_exists( 'ord808af_add_default_title' ) ) {
 			  //$placeholder = __( 'Aloha Friday - Week of ', 'aloha-friday-words' ) . $weekOfMonday;
 
 			  //$data['post_title'] = __( 'Aloha Friday - Week of ', 'aloha-friday-words' ) . $weekOfMonday1;
+			  $timeStamp = date('Y-m-d H:i:s', strtotime('2019-01-02 08:08:00')); // format needed for WordPress
+
+			  $data['post_status'] = 'future'; 
+			  $data['post_date'] = $timeStamp ;
+			  $data['post_date_gmt'] = get_gmt_from_date ($timeStamp) ;
+
+
 			  $data['post_title'] = $my_title1;
+
+			  
 	        }
 
 
@@ -156,5 +165,3 @@ if ( ! function_exists( 'ord808af_add_default_title' ) ) {
 	}
 }
 add_filter( 'wp_insert_post_data', 'ord808af_add_default_title', 10, 1 );
-
-
