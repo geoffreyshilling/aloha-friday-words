@@ -117,6 +117,9 @@ if ( ! function_exists( 'ord808af_add_default_title' ) ) {
 			  */
 			  $mondayOfThisWeek1 = strtotime('last monday');
 			  $weekOfMonday1 = date( 'F j', $mondayOfThisWeek1 ) ;
+			  $dayOfPost = date('j', strtotime("+4 day", $mondayOfThisWeek1));
+			  $monthOfPost = date('m', strtotime("+4 day", $mondayOfThisWeek1));
+			  $yearOfPost = date('Y', strtotime("+4 day", $mondayOfThisWeek1));
   
 			  $my_title1 = 'Aloha Friday - Week of ' . $weekOfMonday1;
 			  $post_id1 = post_exists( $my_title1 );
@@ -126,6 +129,9 @@ if ( ! function_exists( 'ord808af_add_default_title' ) ) {
 				$weekOfMonday1 = date( 'F j', $mondayOfThisWeek1 ) ;
 				$my_title1 = 'Aloha Friday - Week of ' . $weekOfMonday1;
 
+				$dayOfPost = date('j', strtotime("+4 day", $mondayOfThisWeek1));
+				$monthOfPost = date('m', strtotime("+4 day", $mondayOfThisWeek1));
+				$yearOfPost = date('Y', strtotime("+4 day", $mondayOfThisWeek1));
 				$post_id1 = post_exists( $my_title1 );
 			}
 			
@@ -147,7 +153,8 @@ if ( ! function_exists( 'ord808af_add_default_title' ) ) {
 			  //$placeholder = __( 'Aloha Friday - Week of ', 'aloha-friday-words' ) . $weekOfMonday;
 
 			  //$data['post_title'] = __( 'Aloha Friday - Week of ', 'aloha-friday-words' ) . $weekOfMonday1;
-			  $timeStamp = date('Y-m-d H:i:s', strtotime('2019-01-02 08:08:00')); // format needed for WordPress
+			  $timeStamp = date('Y-m-d H:i:s', strtotime("$yearOfPost-$monthOfPost-$dayOfPost 08:08:00")); 
+			 // $timeStamp = date('Y-m-d H:i:s', strtotime('2019-01-02 08:08:00')); // format needed for WordPress
 
 			  $data['post_status'] = 'future'; 
 			  $data['post_date'] = $timeStamp ;
