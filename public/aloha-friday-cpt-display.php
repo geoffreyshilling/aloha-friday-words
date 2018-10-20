@@ -8,19 +8,20 @@
  */
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-// Create a function called "ord808af_add_aloha_friday_post_types_to_query" if it doesn't already exist
-if ( ! function_exists( 'ord808af_add_aloha_friday_post_types_to_query' ) ) {
+// Create a function called "afw808_add_aloha_friday_post_types_to_query" if it doesn't already exist
+if ( ! function_exists( 'afw808_add_aloha_friday_post_types_to_query' ) ) {
 	// Show posts of 'post' and 'mug monday' post types on home page
-	function ord808af_add_aloha_friday_post_types_to_query( $query ) {
-	  if ( true ) {
-	    if ( $query->is_search ) {
-	      $query->set( 'post_type', array( 'post', 'ord808_aloha_friday' ) );
-	    }
-	  }
+	function afw808_add_aloha_friday_post_types_to_query( $query ) {
+	  if ( is_home() && $query->is_main_query() ) {
+				$query->set( 'post_type', array( 'post', 'afw808_aloha_friday' ) );
+				return $query;
+		}
 	}
 }
 
-add_action( 'pre_get_posts','ord808af_add_aloha_friday_post_types_to_query', 10, 1 );
+add_action( 'pre_get_posts','afw808_add_aloha_friday_post_types_to_query', 10, 1 );
 

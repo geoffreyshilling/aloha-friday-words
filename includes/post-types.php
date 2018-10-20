@@ -8,9 +8,11 @@
  */
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-function ord808_register_aloha_friday_post_type() {
+function afw808_register_aloha_friday_post_type() {
     $args = array(
         'public' => true,
         'title_placeholder' => 'Team member name',
@@ -48,6 +50,6 @@ function ord808_register_aloha_friday_post_type() {
             ) ),
         ),
     );
-    register_post_type( 'ord808_aloha_friday', $args );
+    register_post_type( 'afw808_aloha_friday', $args );
 }
-add_action( 'init', 'ord808_register_aloha_friday_post_type' );
+add_action( 'init', 'afw808_register_aloha_friday_post_type' );

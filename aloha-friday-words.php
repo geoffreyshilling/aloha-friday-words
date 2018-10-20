@@ -37,22 +37,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Plugin Constants
 // Plugin version.
-if ( ! defined( 'ORD808AF_VERSION' ) ) {
-	define( 'ORD808AF_VERSION', '0.1.0' );
+if ( ! defined( 'afw808_VERSION' ) ) {
+	define( 'afw808_VERSION', '0.1.0' );
 }
 
 // Plugin directory.
-if ( ! defined( 'ORD808AF_PLUGIN_DIR' ) ) {
-    define( 'ORD808AF_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+if ( ! defined( 'afw808_PLUGIN_DIR' ) ) {
+    define( 'afw808_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 }
 
 // Include dependencies
-require_once ORD808AF_PLUGIN_DIR . 'admin/aloha-friday-cpt-defaults.php';
+require_once afw808_PLUGIN_DIR . 'admin/aloha-friday-cpt-defaults.php';
+require_once afw808_PLUGIN_DIR . 'admin/aloha-friday-words-settings.php';
 
-require_once ORD808AF_PLUGIN_DIR . 'includes/aloha-friday-activation.php';
-require_once ORD808AF_PLUGIN_DIR . 'includes/post-types.php';
+require_once afw808_PLUGIN_DIR . 'includes/aloha-friday-activation.php';
+require_once afw808_PLUGIN_DIR . 'includes/post-types.php';
 
-require_once ORD808AF_PLUGIN_DIR . 'public/aloha-friday-cpt-display.php';
+require_once afw808_PLUGIN_DIR . 'public/aloha-friday-cpt-display.php';
 
 require_once ABSPATH . '/wp-admin/includes/post.php';
 
