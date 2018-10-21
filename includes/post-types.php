@@ -15,8 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 function afw808_register_aloha_friday_post_type() {
     $args = array(
         'public' => true,
-        'title_placeholder' => 'Team member name',
-        'label'  => 'Aloha Friday',
+        'title_placeholder' => 'Aloha Friday - Week of ',
+        'label'  => 'Aloha Friday Words',
         'show_in_rest' => true,
         'supports'  => array( 'title', 'thumbnail', 'editor',  'post-formats'),
         'taxonomies'  => array( 'category' ),

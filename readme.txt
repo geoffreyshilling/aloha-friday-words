@@ -7,8 +7,8 @@ Contributors:      geoffreyshilling
 Author:            Geoffrey Shilling
 Author URI:        https://geoffreyshilling.com/aloha-friday-words/
 Donate link:       https://paypal.me/geoffreyshilling
-Version:           0.1.0
-Stable tag:        0.1.0
+Version:           1.0.0
+Stable tag:        1.0.0
 Requires at least: 4.5
 Tested up to:      4.9.9
 Text Domain:       aloha-friday-words
@@ -72,28 +72,9 @@ Answer to foo bar dilemma.
 
 == Changelog ==
 
-= 1.0 =
+= 1.0: DATE =
 
-* A change since the previous version.
-* Another change.
-
-= 0.5 =
-
-* List versions from most recent at top to oldest at bottom.
-
-
-
-== Upgrade Notice ==
-
-= 1.0 =
-
-Upgrade notices describe the reason a user should upgrade. No more than 300 characters.
-
-= 0.5 =
-
-This version fixes a security related bug. Upgrade immediately.
-
-
+* Initial plugin launch. 
 
 == License ==
 

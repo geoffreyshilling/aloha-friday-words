@@ -1,6 +1,6 @@
 <?php
 /**
- * Aloha Friday Custom Post Type Defaults
+ * Aloha Friday Words Custom Post Type Default Settings
  *
  * @copyright   Copyright (c) 2018, Geoffrey Shilling
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
@@ -8,10 +8,12 @@
  */
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 // Change placeholder text for  post titles
-function afw808_title_placeholders( $placeholder ){
+function afw808_add_default_title_placeholder( $placeholder ){
     $screen = get_current_screen();
 	switch ( $screen->post_type ) {
         case 'afw808_aloha_friday':
@@ -31,9 +33,13 @@ function afw808_title_placeholders( $placeholder ){
 			break;
 		default: break;	
 	}
+	//$options = get_option('my_option_name');
+	
+
+	//$placeholder = $options['default_title'];
     return $placeholder;
 }
-add_filter( 'enter_title_here', 'afw808_title_placeholders' );
+add_filter( 'enter_title_here', 'afw808_add_default_title_placeholder' );
 
 // Create a function called "afw808_add_default_taxonomy" if it doesn't already exist
 if ( ! function_exists( 'afw808_add_default_taxonomy' ) ) {
@@ -79,12 +85,14 @@ function afw808_default_category_featured_image() {
 				set_post_thumbnail( $post->ID, $attachment );
 			}
 		}
-		else if ( in_category( '175' ) ) {
+    	elseif ( in_category( '175' ) ) {
 			set_post_thumbnail( $post->ID, '3105' );
-		}
-	}                              
+			
+    	}
+    	wp_reset_postdata();
+	}            
 }
- add_action( 'the_post', 'afw808_default_category_featured_image' );
+add_action( 'the_post', 'default_category_featured_image' );
 
 // Create a function called "afw808_add_default_title" if it doesn't already exist
 if ( ! function_exists( 'afw808_add_default_title' ) ) {

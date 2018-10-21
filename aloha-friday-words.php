@@ -30,100 +30,42 @@ You should have received a copy of the GNU General Public License
 with this program. If not, visit: https://www.gnu.org/licenses/
 */
 
-// exit if file is called directly
+// Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 // Plugin Constants
 // Plugin version.
-if ( ! defined( 'afw808_VERSION' ) ) {
-	define( 'afw808_VERSION', '0.1.0' );
+if ( ! defined( 'AFW808_VERSION' ) ) {
+	define( 'AFW808_VERSION', '0.1.0' );
 }
 
 // Plugin directory.
-if ( ! defined( 'afw808_PLUGIN_DIR' ) ) {
-    define( 'afw808_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+if ( ! defined( 'AFW808_PLUGIN_DIR' ) ) {
+    define( 'AFW808_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 }
 
+if ( is_admin() ) {
+	require_once AFW808_PLUGIN_DIR . 'includes/aloha-friday-activation.php';
+}
 // Include dependencies
-require_once afw808_PLUGIN_DIR . 'admin/aloha-friday-cpt-defaults.php';
-require_once afw808_PLUGIN_DIR . 'admin/aloha-friday-words-settings.php';
+require_once AFW808_PLUGIN_DIR . 'admin/aloha-friday-cpt-defaults.php';
+require_once AFW808_PLUGIN_DIR . 'admin/aloha-friday-words-settings.php';
 
-require_once afw808_PLUGIN_DIR . 'includes/aloha-friday-activation.php';
-require_once afw808_PLUGIN_DIR . 'includes/post-types.php';
+require_once AFW808_PLUGIN_DIR . 'includes/aloha-friday-activation.php';
+require_once AFW808_PLUGIN_DIR . 'includes/post-types.php';
 
-require_once afw808_PLUGIN_DIR . 'public/aloha-friday-cpt-display.php';
+require_once AFW808_PLUGIN_DIR . 'public/aloha-friday-cpt-display.php';
 
 require_once ABSPATH . '/wp-admin/includes/post.php';
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function media_uploader_enqueue() {
+	wp_enqueue_media();
+    wp_register_script('media-uploader', plugin_dir_url( __FILE__ ) . 'admin/js/media-uploader.js', array('jquery'));
+	wp_enqueue_script('media-uploader');
+}
+add_action('admin_enqueue_scripts', 'media_uploader_enqueue');
 
