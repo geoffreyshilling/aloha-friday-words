@@ -50,6 +50,6 @@ function afw808_register_aloha_friday_post_type() {
             ) ),
         ),
     );
-    register_post_type( 'afw808_aloha_friday', $args );
+    register_post_type( 'aloha_friday_words', $args );
 }
 add_action( 'init', 'afw808_register_aloha_friday_post_type' );

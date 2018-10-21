@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 function afw808_add_default_title_placeholder( $placeholder ){
     $screen = get_current_screen();
 	switch ( $screen->post_type ) {
-        case 'afw808_aloha_friday':
+        case 'aloha_friday_words':
         	$mondayOfThisWeek = strtotime( 'last monday' );
 			$weekOfMonday = date( 'F j', $mondayOfThisWeek ) ;
 
@@ -47,21 +47,21 @@ if ( ! function_exists( 'afw808_add_default_taxonomy' ) ) {
 		// Only add Mug Monday taxonomy to Mug Monday post types
 
 		// Check if 'Mug Monday' category already exists
-		$term = term_exists( 'Aloha Friday', 'category' );
+		$term = term_exists( 'Aloha Friday Words', 'category' );
 		// Mug Monday category does not exist. Create it
 		if ( 0 === $term || null === $term ) {
 			wp_insert_term(
-				'Aloha Friday', // the term
+				'Aloha Friday Words', // the term
 				'category', // the taxonomy
 				array(
 					'description' => 'A new Hawaiian word and definition every Friday.',
-					'slug' => 'aloha-friday',
+					'slug' => 'aloha-friday-words',
 				)
 	 		);
 		}
 
 		// An array of IDs of categories we to add to this post.
-		$cat_ids = array( get_cat_ID( 'Aloha Friday' ) );
+		$cat_ids = array( get_cat_ID( 'Aloha Friday Words' ) );
 		$term_taxonomy_ids = wp_set_object_terms( $post_id, $cat_ids, 'category', true );
 
 		if ( is_wp_error( $term_taxonomy_ids ) ) {
@@ -71,13 +71,13 @@ if ( ! function_exists( 'afw808_add_default_taxonomy' ) ) {
 		}
 	}
 }
-add_action( 'save_post_afw808_aloha_friday', 'afw808_add_default_taxonomy' );
+add_action( 'save_post_aloha_friday_words', 'afw808_add_default_taxonomy' );
 
 
 function afw808_default_category_featured_image() {
     global $post;
     $featured_image_exists = has_post_thumbnail( $post->ID );
-    $aloha_friday_words_cat_id = array( get_cat_ID( 'Aloha Friday' ) );
+    $aloha_friday_words_cat_id = array( get_cat_ID( 'Aloha Friday Words' ) );
 
     global $wpdb;
     $aloha_friday_words_options = get_option( 'my_option_name' );
@@ -110,7 +110,7 @@ if ( ! function_exists( 'afw808_add_default_title' ) ) {
 	 * @return string
 	*/
 	function afw808_add_default_title( $data ) {
-	    if ( 'afw808_aloha_friday' === $data['post_type'] ) {
+	    if ( 'aloha_friday_words' === $data['post_type'] ) {
 	        if ( empty( $data['post_title'] ) ) {
 				
 
@@ -138,7 +138,7 @@ if ( ! function_exists( 'afw808_add_default_title' ) ) {
 				$afw808_post_id = post_exists( $afw808_default_title );
 			}
 			
-			  if ( get_page_by_title( $afw808_default_title, OBJECT, 'afw808_aloha_friday' ) != null ) {
+			  if ( get_page_by_title( $afw808_default_title, OBJECT, 'aloha_friday_words' ) != null ) {
 				$afw808_default_title = 'Aloha Friday - Week of ' . $weekOfMonday1 . ' already exists';
 				
 			} else {

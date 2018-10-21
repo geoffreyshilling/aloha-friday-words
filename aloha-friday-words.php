@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name:       Aloha Friday Words
+Plugin Name:       Aloha Friday Words Current
 Description:       Easily share a weekly Hawaiian word and its definition.
 Plugin URI:        https://geoffreyshilling.com/aloha-friday-words/
 Contributors:      geoffreyshilling
