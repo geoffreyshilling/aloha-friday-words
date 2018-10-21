@@ -77,7 +77,15 @@ add_action( 'save_post_afw808_aloha_friday', 'afw808_add_default_taxonomy' );
 function afw808_default_category_featured_image() {
     global $post;
     $featured_image_exists = has_post_thumbnail( $post->ID );
-                  
+    $aloha_friday_words_cat_id = array( get_cat_ID( 'Aloha Friday' ) );
+
+    global $wpdb;
+    $aloha_friday_words_options = get_option( 'my_option_name' );
+    $image_url = $aloha_friday_words_options['default_featured_image'];
+    $attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $image_url ));
+    $afw_featured_image_id = $attachment[0];
+
+
     if ( ! $featured_image_exists )  {
     	$attached_image = get_children( "post_parent=$post->ID&post_type=attachment&post_mime_type=image&numberposts=1" );
 		if ( $attached_image ) {				
@@ -85,14 +93,14 @@ function afw808_default_category_featured_image() {
 				set_post_thumbnail( $post->ID, $attachment );
 			}
 		}
-    	elseif ( in_category( '175' ) ) {
-			set_post_thumbnail( $post->ID, '3105' );
+    	elseif ( in_category( $aloha_friday_words_cat_id ) ) {
+			set_post_thumbnail( $post->ID, $afw_featured_image_id );
 			
     	}
     	wp_reset_postdata();
 	}            
 }
-add_action( 'the_post', 'default_category_featured_image' );
+add_action( 'the_post', 'afw808_default_category_featured_image' );
 
 // Create a function called "afw808_add_default_title" if it doesn't already exist
 if ( ! function_exists( 'afw808_add_default_title' ) ) {

@@ -1,5 +1,5 @@
 <?php
-class MySettingsPage
+class Aloha_Friday_Words_Settings_Page
 {
     /**
      * Holds the values to be used in the fields callbacks
@@ -148,14 +148,14 @@ class MySettingsPage
 
     }
         
-        printf(
-            '<input size="43" type="text" id="default_featured_image" name="my_option_name[default_featured_image]" value="%s" />',
-            isset( $this->options['default_featured_image'] ) ? esc_attr( $this->options['default_featured_image']) : ''
-        );
+    printf(
+        '<input size="43" type="text" id="default_featured_image" name="my_option_name[default_featured_image]" value="%s" />',
+        isset( $this->options['default_featured_image'] ) ? esc_attr( $this->options['default_featured_image']) : ''
+    );
 
-        printf(
-            '<br><input id="upload_image_button" type="button" class="button-primary" value="Set Default Image" />'
-        );
+    printf(
+        '<br><input id="upload_image_button" type="button" class="button-primary" value="Set Default Image" />'
+    );
 
 
         
@@ -164,4 +164,4 @@ class MySettingsPage
 }
 
 if( is_admin() )
-    $my_settings_page = new MySettingsPage();
+    $my_settings_page = new Aloha_Friday_Words_Settings_Page();

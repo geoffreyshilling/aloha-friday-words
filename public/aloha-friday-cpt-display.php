@@ -16,12 +16,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! function_exists( 'afw808_add_aloha_friday_post_types_to_query' ) ) {
 	// Show posts of 'post' and 'mug monday' post types on home page
 	function afw808_add_aloha_friday_post_types_to_query( $query ) {
-	  if ( is_home() && $query->is_main_query() ) {
-				$query->set( 'post_type', array( 'post', 'afw808_aloha_friday' ) );
-				return $query;
+        if ( $query->is_main_query() ) {
+            $query->set( 'post_type', array( 'post', 'afw808_aloha_friday' ) );
+            return $query;
 		}
 	}
 }
-
 add_action( 'pre_get_posts','afw808_add_aloha_friday_post_types_to_query', 10, 1 );
 
