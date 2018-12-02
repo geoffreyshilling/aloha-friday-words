@@ -1,0 +1,7 @@
+== Changelog ==
+
+= October 21, 2018 =
+
+* Replaced hard-coded 'Aloha Friday' category ID used to add default taxonomy with a dynamic search for the proper category ID.
+* Replaced hard-coded featured image with one based on what the default image is on the settings page.
+* Update slug and references from 'Aloha Friday' to 'Aloha Friday Words.'
